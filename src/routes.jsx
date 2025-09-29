@@ -14,6 +14,7 @@ import EnrolledWorkshops from "./components/participant/EnrolledWorkshops";
 import WorkshopParticipants from "./components/admin/WorkshopParticipants";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import { Home, Profile, Tables, Notifications } from "../src/pages/dashboard";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -71,6 +72,29 @@ export const routes = [
         path: "/workshops/:id",
         element: <WorkshopDetails />,
         roles: ["PARTICIPANT", "ADMIN"], // both can see details
+      },{
+        icon: <HomeIcon {...icon} />,
+        name: "dashboard",
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        icon: <UserCircleIcon {...icon} />,
+        name: "profile",
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        icon: <TableCellsIcon {...icon} />,
+        name: "tables",
+        path: "/tables",
+        element: <Tables />,
+      },
+      {
+        icon: <InformationCircleIcon {...icon} />,
+        name: "notifications",
+        path: "/notifications",
+        element: <Notifications />,
       },
     ],
   },
@@ -91,3 +115,6 @@ export const routes = [
     ],
   },
 ];
+
+
+export default routes;

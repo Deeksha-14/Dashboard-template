@@ -1,0 +1,44 @@
+return (
+    
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="max-w-2xl w-full bg-white rounded-2xl shadow p-8 space-y-6">
+        {/* ✅ Tailwind smoke test */}
+        <div className="p-4 rounded-lg bg-black text-white text-center">
+          Tailwind working
+        </div>
+
+        <h1 className="text-3xl font-bold text-center">Welcome to QACC</h1>
+<div className="p-3 rounded text-white
+                bg-red-600 sm:bg-yellow-500 md:bg-blue-600 lg:bg-green-600">
+  Resize window to see colors change
+</div>
+        {user ? (
+          <button
+            onClick={() => {
+              const role = typeof user?.role === "string" ? user.role : user?.role?.name;
+              navigate(role === "ADMIN" ? "/dashboard/admin" : "/dashboard/participant", { replace: true });
+            }}
+            className="w-full sm:w-auto mx-auto block px-5 py-2.5 rounded-lg border bg-gray-900 text-white hover:opacity-90"
+          >
+            Go to Dashboard
+          </button>
+        ) : (
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              to="/auth/sign-in"
+              className="px-5 py-2.5 rounded-lg border bg-gray-900 text-white text-center hover:opacity-90"
+            >
+              Log In
+            </Link>
+            <Link
+              to="/auth/sign-up"
+              className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-900 text-center hover:bg-gray-50"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

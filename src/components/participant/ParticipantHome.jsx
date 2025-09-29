@@ -21,10 +21,10 @@ import {
   LocationOn
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-import { workshopService } from '../../services/workshopService';
-import { useAuth } from '../../context/AuthContext';
+import { workshopService } from '../../services/workshopService.js';
+import { useAuth } from '../../context/AuthContext.jsx';
 import { OpenInNew as OpenInNewIcon } from '@mui/icons-material';
-import config from '../../config/config';
+import config from '../../configurations/config.js'
 
 const ParticipantHome = () => {
   const [enrolledWorkshops, setEnrolledWorkshops] = useState([]);
@@ -230,7 +230,7 @@ const ParticipantHome = () => {
   );
 };
 
-const getWorkshopStatus = (startDate: string, endDate: string) => {
+const getWorkshopStatus = (startDate, endDate) => {
   const now = new Date();
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -240,7 +240,7 @@ const getWorkshopStatus = (startDate: string, endDate: string) => {
   return 'In Progress';
 };
 
-const getStatusColor = (startDate: string, endDate: string) => {
+const getStatusColor = (startDate, endDate) => {
   const status = getWorkshopStatus(startDate, endDate);
   switch (status) {
     case 'Upcoming':

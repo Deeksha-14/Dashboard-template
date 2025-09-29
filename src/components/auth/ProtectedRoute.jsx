@@ -10,7 +10,7 @@ export const ProtectedRoute = ({ children, adminOnly = false }) => {
   }
 
   if (adminOnly && !isAdmin) {
-    return <Navigate to="/unauthorized" />;
+    return <Navigate to="/dashboard" />;
   }
 
   return children;
