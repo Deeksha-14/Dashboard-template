@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
-import Particles from "../../bits/Particles";
+import Particles from "./Particles";
 import Typed from 'typed.js';
 import React, { useEffect, useRef } from 'react';
  
