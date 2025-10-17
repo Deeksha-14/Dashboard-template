@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../../services/axiosConfig";
+import axiosInstance from "../services/axiosConfig";
 import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 
 const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -94,7 +94,7 @@ export default function Register() {
         <form onSubmit={onSubmit} className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
           <div className="mb-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">First name</Typography>
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">First name</Typography>
               <Input
                 name="firstName"
                 value={form.firstName}
@@ -111,7 +111,7 @@ export default function Register() {
             </div>
 
             <div>
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">Middle name (optional)</Typography>
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">Middle name (optional)</Typography>
               <Input
                 name="middleName"
                 value={form.middleName}
@@ -125,7 +125,7 @@ export default function Register() {
             </div>
 
             <div>
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">Last name</Typography>
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">Last name</Typography>
               <Input
                 name="lastName"
                 value={form.lastName}
@@ -142,7 +142,7 @@ export default function Register() {
             </div>
 
             <div>
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">Phone number</Typography>
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">Phone number</Typography>
               <Input
                 name="phoneNumber"
                 value={form.phoneNumber}
@@ -159,7 +159,7 @@ export default function Register() {
             </div>
 
             <div className="sm:col-span-2">
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">Email</Typography>
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">Email</Typography>
               <Input
                 name="email"
                 value={form.email}
@@ -176,7 +176,7 @@ export default function Register() {
             </div>
 
             <div className="sm:col-span-2">
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">Password</Typography>
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">Password</Typography>
               <div className="relative">
                 <Input
                   name="password"

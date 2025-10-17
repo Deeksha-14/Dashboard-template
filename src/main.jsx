@@ -9,8 +9,8 @@ import { ThemeProvider as MUIThemeProvider, createTheme } from "@mui/material/st
 import CssBaseline from "@mui/material/CssBaseline";
 
 import { ThemeProvider as MTProvider } from "@material-tailwind/react";
-import { MaterialTailwindControllerProvider } from "./context/index"; // see step 2------------
-import { AuthProvider } from "./context/AuthContext.jsx";
+import { MaterialTailwindControllerProvider } from "./components/context/index"; // see step 
+import { AuthProvider } from "./components/context/AuthContext.jsx";
 
 const muiTheme = createTheme({
   palette: { mode: "light" }, // tweak later if you want dark

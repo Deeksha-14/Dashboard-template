@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import Sidenav from "./Sidenav";
-import DashboardNavbar from "./DashboardNavbar";
-import Footer from "./Footer";
-import Configurator from "./Configurator";
+import Sidenav from "./dashboard/Sidenav";
+import DashboardNavbar from "./dashboard/DashboardNavbar";
+import Footer from "./dashboard/Footer";
+import Configurator from "./dashboard/Configurator";
 
 export default function DashboardLayout() {
   return (

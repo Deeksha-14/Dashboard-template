@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import axiosInstance from "../../services/axiosConfig";
+import { useAuth } from "../context/AuthContext";
+import axiosInstance from "../services/axiosConfig";
 import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
 
 const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -80,7 +80,7 @@ export default function Login() {
         <form onSubmit={onSubmit} className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
           <div className="mb-1 flex flex-col gap-6">
             <div>
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+              <Typography variant="small" color="blue-gray" className="font-medium">
                 Email
               </Typography>
               <Input
@@ -102,7 +102,7 @@ export default function Login() {
             </div>
 
             <div>
-              <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+              <Typography variant="small" color="blue-gray" className="-mb-1 font-medium">
                 Password
               </Typography>
               <div className="relative">

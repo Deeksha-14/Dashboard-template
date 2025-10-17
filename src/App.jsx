@@ -1,11 +1,11 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuth } from "./context/AuthContext";
+import { useAuth } from "./components/context/AuthContext";
 import RoleGate from "./RoleGate";
 import { dashboardRoutes } from "./routes.config";
 import DashboardLayout from "./components/layout/DashboardLayout";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Home from "./pages/public/Home";
+import Home from "./components/layout/Home";
 
 function RoleLanding() {
   const { user } = useAuth();

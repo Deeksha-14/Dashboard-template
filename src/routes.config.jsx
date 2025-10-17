@@ -1,6 +1,6 @@
 import { Icon } from "@mui/material";
-import AdminDashboard from "./pages/admin/AdminDashboard"
-import ParticipantDashboard from "./pages/participant/ParticipantDashboard"
+import AdminDashboard from "./components/layout/dashboard/adminDashboard/AdminDashboard"
+import ParticipantDashboard from "./components/layout/dashboard/participantsDashboard/ParticipantDashboard"
 import { HomeIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 
