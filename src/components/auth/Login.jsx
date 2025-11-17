@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axiosInstance from "../services/axiosConfig";
 import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
+import Navbar from "../layout/Home/navbar";
 
 const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -67,11 +68,13 @@ export default function Login() {
     touched[key] && errors[key] ? "!border-red-500 focus:!border-red-500" : "";
 
   return (
-    <section className="m-8 flex gap-4">
-      {/* Form */}
-      <div className="w-full lg:w-3/5 mt-10 lg:mt-24">
+    <>
+      <Navbar />
+      <section className="m-8 flex gap-4 pt-20 justify-center items-center">
+        {/* Form */}
+        <div className="w-full lg:w-3/5 mt-10 lg:mt-24">
         <div className="text-center">
-          <Typography variant="h2" className="font-bold mb-4">Sign In</Typography>
+          <Typography variant="h2" className="font-bold mb-4">Login</Typography>
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">
             Enter your email and password to continue.
           </Typography>
@@ -173,17 +176,18 @@ export default function Login() {
           </div>
 
           <Typography variant="small" className="text-center text-blue-gray-500 font-medium mt-6">
-            Not registered?
-            <Link to="/auth/sign-up" className="text-gray-900 ml-1 underline">Create account</Link>
+            New user?
+            <Link to="/auth/sign-up" className="text-blue-800 ml-1 underline">Register Now</Link>
           </Typography>
         </form>
-      </div>
+        </div>
 
       {/* Side Image */}
-      <div className="w-2/5 h-full hidden lg:block">
+      {/* <div className="w-2/5 h-full hidden lg:block">
         <img src="/img/pattern.png" className="h-full w-full object-cover rounded-3xl" alt="" />
-      </div>
-    </section>
+      </div> */}
+      </section>
+    </>
   );
 }
 

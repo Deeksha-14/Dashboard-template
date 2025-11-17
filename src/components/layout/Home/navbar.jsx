@@ -8,10 +8,12 @@ const Navbar = () => {
     <div className="flex justify-between items-center h-16">
       {/* Logo Section - shifted more to the left */}
       <div className="flex items-center space-x-3 -ml-4 lg:-ml-6">
+        <Link to="/" className="flex items-center space-x-3 -ml-4 lg:-ml-6 no-underline">
         <div className="flex items-center space-x-2">
-          <img src="../../../../public/img/cdacblue.png" alt='CDAC Logo' className="w-8 h-8" />
+          <img src="../../../../public/images/cdacblue.png" alt='CDAC Logo' className="w-8 h-8" />
         </div>
         <span className="text-xl font-bold text-white">QKaryashala</span>
+        </Link>
       </div>
 
       {/* Search Bar - center section */}

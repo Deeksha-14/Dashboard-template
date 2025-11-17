@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../services/axiosConfig";
 import { Input, Checkbox, Button, Typography } from "@material-tailwind/react";
+import Navbar from "../layout/Home/navbar";
 
 const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRx = /^\+?[0-9]{10,15}$/;
@@ -76,16 +77,18 @@ export default function Register() {
         : 33;
 
   return (
-    <section className="m-8 flex">
-      {/* Side Image */}
-      <div className="w-2/5 h-full hidden lg:block">
+    <>
+      <Navbar />
+      <section className="m-8 flex pt-20 justify-center items-center">
+        {/* Side Image */}
+        {/* <div className="w-2/5 h-full hidden lg:block">
         <img src="/img/pattern.png" className="h-full w-full object-cover rounded-3xl" alt="" />
-      </div>
+        </div> */}
 
-      {/* Form */}
-      <div className="w-full lg:w-3/5 flex flex-col items-center justify-center">
+        {/* Form */}
+        <div className="w-full lg:w-3/5 flex flex-col items-center justify-center">
         <div className="text-center">
-          <Typography variant="h2" className="font-bold mb-4">Create your account</Typography>
+          <Typography variant="h2" className="font-bold mb-4">Create Account</Typography>
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">
             Enter your details to register.
           </Typography>
@@ -242,11 +245,12 @@ export default function Register() {
 
           <Typography variant="small" className="text-center text-blue-gray-500 font-medium mt-6">
             Already have an account?
-            <Link to="/auth/sign-in" className="text-gray-900 ml-1 underline">Sign in</Link>
+            <Link to="/auth/sign-in" className="text-blue-800 ml-1">Log in</Link>
           </Typography>
         </form>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 }
 
