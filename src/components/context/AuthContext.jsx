@@ -26,20 +26,21 @@ function decodeJwt(token) {
 function extractRoleFromPayload(payload) {
   if (!payload) return null;
   // Common shapes
-  if (typeof payload.role === 'string') return payload.role;
-  if (payload.role && typeof payload.role.name === 'string') return payload.role.name;
+  if (typeof payload.role === 'string') return payload.role.replace(/^ROLE_/, '');
+  if (payload.role && typeof payload.role.name === 'string') return payload.role.name.replace(/^ROLE_/, '');
   if (Array.isArray(payload.roles) && payload.roles.length) {
     // roles might be array of strings or objects
     const first = payload.roles[0];
-    if (typeof first === 'string') return first;
-    if (first && typeof first.name === 'string') return first.name;
+    if (typeof first === 'string') return first.replace(/^ROLE_/, '');
+    if (first && typeof first.name === 'string') return first.name.replace(/^ROLE_/, '');
   }
   // Some backends use `authorities` or `roles` under different keys
   if (Array.isArray(payload.authorities) && payload.authorities.length) {
-    return typeof payload.authorities[0] === 'string' ? payload.authorities[0] : null;
+    const auth = typeof payload.authorities[0] === 'string' ? payload.authorities[0] : null;
+    return auth ? auth.replace(/^ROLE_/, '') : null;
   }
   // custom claim names
-  if (typeof payload['roleName'] === 'string') return payload['roleName'];
+  if (typeof payload['roleName'] === 'string') return payload['roleName'].replace(/^ROLE_/, '');
   return null;
 }
 

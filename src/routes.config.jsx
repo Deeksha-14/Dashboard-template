@@ -1,6 +1,7 @@
 import { Icon } from "@mui/material";
 import AdminDashboard from "./components/layout/dashboard/adminDashboard/AdminDashboard"
 import ParticipantDashboard from "./components/layout/dashboard/participantsDashboard/ParticipantDashboard"
+import ErrorBoundary from "./components/ErrorBoundary"
 import { HomeIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 
@@ -11,7 +12,7 @@ export const dashboardRoutes = [
   { name: "Admin Dashboard", path: "admin", element: <AdminDashboard/>, roles: ["ADMIN"], icon: HomeIcon },
 
   // PARTICIPANT-only
-  { name: "Participant Dashboard", path: "participant", element: <ParticipantDashboard/>, roles: ["PARTICIPANT"], icon: UserCircleIcon },
+  { name: "Participant Dashboard", path: "participant", element: <ErrorBoundary><ParticipantDashboard/></ErrorBoundary>, roles: ["PARTICIPANT"], icon: UserCircleIcon },
 
   // add more items later (profile, workshops, etc.)
 ];

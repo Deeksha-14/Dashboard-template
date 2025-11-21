@@ -7,42 +7,81 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Home from "./components/layout/Home";
 
+/**
+ * RoleLanding: Redirects authenticated users to their role-specific dashboard
+ */
 function RoleLanding() {
   const { user } = useAuth();
+
+  if (!user) {
+    return <Navigate to="/auth/sign-in" replace />;
+  }
+
   const role = typeof user?.role === "string" ? user.role : user?.role?.name;
   const to = role === "ADMIN" ? "/dashboard/admin" : "/dashboard/participant";
   return <Navigate to={to} replace />;
 }
 
+/**
+ * ProtectedRoute: Wraps dashboard routes to ensure user is authenticated
+ * Individual role checks are handled by RoleGate for specific routes
+ */
+const ProtectedRoute = ({ children }) => {
+  const { user } = useAuth();
+
+  if (!user) {
+    return <Navigate to="/auth/sign-in" replace />;
+  }
+
+  return children;
+};
+
 export default function App() {
   return (
     <Routes>
-      {/* PUBLIC */}
+      {/* ==================== PUBLIC ROUTES ==================== */}
       <Route path="/home" element={<Home />} />
       <Route path="/" element={<Navigate to="/home" replace />} />
 
-
-
-      {/* All app pages (with sidebar/navbar) live under /dashboard/* */}
-      <Route path="/dashboard/*" element={<DashboardLayout />}>
-        {dashboardRoutes.map(({ path, roles, element }) => (
-          <Route key={path} path={path} element={<RoleGate roles={roles}>{element}</RoleGate>} />
-        ))}
-
-        {/* /dashboard -> redirect to role home */}
-        <Route index element={<RoleGate roles={["ADMIN","PARTICIPANT"]}><RoleLanding /></RoleGate>} />
-      </Route>
-
-      {/* Auth routes (Project 1 originals)
+      {/* Auth Routes */}
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} /> */}
-
-      {/* Compat for Project 2 links: */}
       <Route path="/auth/sign-in" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/auth/sign-up" element={<Register />} />
 
-      {/* Catch-all */}
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      {/* ==================== PROTECTED ROUTES ==================== */}
+      {/* All dashboard routes are protected and wrapped with DashboardLayout */}
+      <Route
+        path="/dashboard/*"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
+        {/* Role-specific dashboard routes */}
+        {dashboardRoutes.map(({ path, roles, element }) => (
+          <Route
+            key={path}
+            path={path}
+            element={<RoleGate roles={roles}>{element}</RoleGate>}
+          />
+        ))}
+
+        {/* /dashboard alone redirects to role-specific dashboard */}
+        <Route
+          index
+          element={
+            <RoleGate roles={["ADMIN", "PARTICIPANT"]}>
+              <RoleLanding />
+            </RoleGate>
+          }
+        />
+      </Route>
+
+      {/* ==================== FALLBACK ==================== */}
+      {/* Redirect unknown routes to home */}
+      <Route path="*" element={<Navigate to="/home" replace />} />
     </Routes>
   );
 }
